@@ -43,7 +43,7 @@ $factory->define(App\Employee::class, function (Faker $faker) {
         'dirphone' => null,
         'camabldg' => ($empltype === 'A') ? $faker->randomElement(['WCOB','WJWH','RCED','JBHT']) : null,
         'camaroom' => ($empltype === 'A') ? $faker->randomNumber(3) : null,
-        'camphone' => ($empltype === 'A') ? "479/575-{$faker->randomNumber(4)}" : null,
+        'camphone' => ($empltype === 'A') ? "479/575-{$faker->randomNumber(4, true)}" : null,
         'email' => "$username@uark.edu",
         'empltype' => $empltype,
         'dptchair' => $dptchair ? 'Y' : 'N',
