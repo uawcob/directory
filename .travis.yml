@@ -1,0 +1,15 @@
+language: php
+env:
+  global:
+    - APP_ENV=testing
+    - APP_KEY=base64:B1PnRwGSyTSWM+qFnnSdMP6r0as4+jtlSu9OS5x3Abs=
+php:
+  - nightly
+  - 7.1
+  - 7.0
+install:
+  - composer install
+script:
+  - ./vendor/bin/phpunit --coverage-clover=coverage.xml
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
