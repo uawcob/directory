@@ -3,6 +3,12 @@ env:
   global:
     - APP_ENV=testing
     - APP_KEY=base64:B1PnRwGSyTSWM+qFnnSdMP6r0as4+jtlSu9OS5x3Abs=
+    - DB_CONNECTION=mysql
+    - DB_HOST=127.0.0.1
+    - DB_PORT=3306
+    - DB_DATABASE=travis
+    - DB_USERNAME=root
+    - DB_PASSWORD=""
 php:
   - nightly
   - 7.1
