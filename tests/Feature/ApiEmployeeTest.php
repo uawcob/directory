@@ -25,4 +25,20 @@ class ApiEmployeeTest extends TestCase
             ]])
         ;
     }
+
+    public function test_gets_employees()
+    {
+        $employee = create(Employee::class, [], 5)[3];
+
+        $this
+            ->getJson("/api/v1/employees")
+            ->assertJson(['data' => [3 => [
+                'email' => strtolower($employee->email),
+                'name' => $employee->prefname,
+                'departments' => [
+                    $employee->BU_Code,
+                ],
+            ]]])
+        ;
+    }
 }
