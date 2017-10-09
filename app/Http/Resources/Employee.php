@@ -15,6 +15,7 @@ class Employee extends Resource
     public function toArray($request)
     {
         return [
+            'username' => strtolower($this->username),
             'name' => $this->prefname,
             'first_name' => $this->firstname,
             'last_name' => $this->lastname,

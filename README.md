@@ -31,6 +31,10 @@ Leave `APP_KEY` blank because it will be set by the deploy script later.
 If you are running a Linux server connecting to MS SQL Server, then you might
 be interested in the `php-sybase` package with [these configurations][15].
 
+There are special web server configurations declared in [`.htaccess`][16]
+which should be instead defined directly inside the virtual host.
+Relying on the .htaccess file will slow down your site's performance.
+
 Finally, there is a short [deploy script][14] to finish installation.
 
     ./deploy.bash
@@ -51,3 +55,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 [12]:https://github.com/razorbacks/ubuntu-authentication/tree/master/shibboleth
 [14]:./deploy.bash
 [15]:https://stackoverflow.com/a/32555727/4233593
+[16]:./public/.htaccess

@@ -1,0 +1,116 @@
+openapi: 3.0.0
+servers:
+- url: /api/v1
+info:
+  title: Directory API
+  version: 1.0.0
+paths:
+  /employees:
+    get:
+      tags:
+      - employees
+      summary: List current employees
+      description: Returns a list of current employees
+      operationId: getEmployees
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Employees"
+  /employees/{username}:
+    get:
+      tags:
+      - employees
+      summary: Find employee by username
+      description: Returns a single employee
+      operationId: getEmployee
+      parameters:
+      - name: username
+        in: path
+        description: The employee's username
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: "#/components/schemas/Employee"
+        404:
+          description: employee not found
+tags:
+- name: employees
+  description: Access to employee data
+components:
+  schemas:
+    Employee:
+      required:
+      - username
+      - name
+      - first_name
+      - last_name
+      - classifications
+      - departments
+      - email
+      properties:
+        username:
+          type: string
+          format: string
+          example: jdoe123
+        name:
+          type: string
+          format: string
+          example: John Doe
+        first_name:
+          type: string
+          format: string
+          example: John
+        last_name:
+          type: string
+          format: string
+          example: Doe
+        title:
+          type: string
+          format: string
+          example: Professor
+        classifications:
+          type: array
+          items:
+            type: string
+            format: string
+            enum:
+            - Faculty
+            - Staff
+            - Student
+            - Hourly
+        departments:
+          type: array
+          items:
+            type: string
+            format: string
+            example: Supply Chain Management
+        email:
+          type: string
+          format: string
+          example: jdoe123@uark.edu
+        office:
+          type: string
+          format: string
+          example: WCOB 475
+        phone:
+          type: string
+          format: string
+          example: 479/575-2000
+      type: object
+    Employees:
+      type: array
+      items:
+        $ref: "#/components/schemas/Employee"
