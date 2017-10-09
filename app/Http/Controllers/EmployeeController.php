@@ -9,8 +9,31 @@ use App\Http\Resources\Employee as EmployeeResource;
 class EmployeeController extends Controller
 {
     /**
+     * @SWG\Swagger(
+     *   schemes={"https"},
+     *   basePath="/api/v1",
+     *   @SWG\Info(
+     *     title="Directory API",
+     *     version="1.0.0"
+     *   )
+     * )
+     * @SWG\Tag(
+     *   name="employees",
+     *   description="Access to employee data"
+     * )
+     */
+
+    /**
      * Display a listing of the resource.
      *
+     * @SWG\Get(
+     *   tags={"employees"},
+     *   path="/employees",
+     *   summary="List current employees",
+     *   description="Returns a list of current employees",
+     *   operationId="getEmployees",
+     *   @SWG\Response(response=200, description="successful operation"),
+     * )
      * @return \Illuminate\Http\Response
      */
     public function index()

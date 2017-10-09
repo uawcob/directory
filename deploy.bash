@@ -10,6 +10,7 @@ php artisan migrate
 php artisan cache:clear
 php artisan route:cache
 php artisan config:cache
+php artisan l5-swagger:generate
 php artisan up
 php artisan opcache:clear
 php artisan opcache:optimize

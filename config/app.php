@@ -197,6 +197,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        // load here so that I can override routes
+        L5Swagger\L5SwaggerServiceProvider::class,
 
     ],
 

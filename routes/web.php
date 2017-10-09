@@ -12,3 +12,5 @@
 */
 
 Route::view('/', 'welcome');
+
+Route::view('/api', 'api.index', ['title' => 'Directory API Documentation']);
