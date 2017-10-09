@@ -32,7 +32,15 @@ class EmployeeController extends Controller
      *   summary="List current employees",
      *   description="Returns a list of current employees",
      *   operationId="getEmployees",
-     *   @SWG\Response(response=200, description="successful operation"),
+     *   produces={"application/json"},
+     *   @SWG\Response(
+     *     response=200,
+     *     description="successful operation",
+     *     @SWG\Schema(
+     *         type="array",
+     *         @SWG\Items(ref="#/definitions/Employee")
+     *     ),
+     *   ),
      * )
      * @return \Illuminate\Http\Response
      */
@@ -65,6 +73,27 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      *
+     * @SWG\Get(
+     *   tags={"employees"},
+     *   path="/employees/{username}",
+     *   summary="Find employee by username",
+     *   description="Returns a single employee",
+     *   operationId="getEmployee",
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
+     *     name="username",
+     *     in="path",
+     *     description="The employee username that needs to be fetched.",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(
+     *     response=200,
+     *     description="successful operation",
+     *     @SWG\Schema(ref="#/definitions/Employee"),
+     *   ),
+     *   @SWG\Response(response=404, description="employee not found"),
+     * )
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */

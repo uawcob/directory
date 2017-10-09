@@ -17,15 +17,76 @@
                 "summary": "List current employees",
                 "description": "Returns a list of current employees",
                 "operationId": "getEmployees",
+                "produces": [
+                    "application/json"
+                ],
                 "responses": {
                     "200": {
-                        "description": "successful operation"
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Employee"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/employees/{username}": {
+            "get": {
+                "tags": [
+                    "employees"
+                ],
+                "summary": "Find employee by username",
+                "description": "Returns a single employee",
+                "operationId": "getEmployee",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "The employee username that needs to be fetched.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Employee"
+                        }
+                    },
+                    "404": {
+                        "description": "employee not found"
                     }
                 }
             }
         }
     },
-    "definitions": {},
+    "definitions": {
+        "Employee": {
+            "required": [
+                "username",
+                "name",
+                "first_name",
+                "last_name",
+                "classifications",
+                "departments",
+                "email"
+            ],
+            "properties": {
+                "username": {
+                    "type": "string",
+                    "format": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
     "tags": [
         {
             "name": "employees",

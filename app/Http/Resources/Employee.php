@@ -4,8 +4,28 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
 
+/**
+ * @SWG\Definition(
+ *   required={
+ *     "username",
+ *     "name",
+ *     "first_name",
+ *     "last_name",
+ *     "classifications",
+ *     "departments",
+ *     "email",
+ *   },
+ *   type="object",
+ * )
+ */
 class Employee extends Resource
 {
+    /**
+     * @SWG\Property(format="string")
+     * @var string
+     */
+    protected $username;
+
     /**
      * Transform the resource into an array.
      *
@@ -15,6 +35,7 @@ class Employee extends Resource
     public function toArray($request)
     {
         return [
+            'username' => strtolower($this->username),
             'name' => $this->prefname,
             'first_name' => $this->firstname,
             'last_name' => $this->lastname,
